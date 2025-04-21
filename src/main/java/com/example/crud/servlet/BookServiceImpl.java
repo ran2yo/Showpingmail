@@ -19,4 +19,11 @@ public class BookServiceImpl implements BookService{
 		
 		return bookRepository.getAllBookList();
 	}
+
+	
+	public Domain getBookById(String bookId) {
+		Domain bookById = bookRepository.getBookById(bookId);
+		
+		return bookById;
+	}
 }

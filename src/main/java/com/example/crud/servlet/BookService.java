@@ -6,5 +6,5 @@ import com.example.crud.domain.Domain;
 
 public interface BookService {
 	List<Domain> getAllBookList();
-	
+	Domain getBookById(String bookId);
 }

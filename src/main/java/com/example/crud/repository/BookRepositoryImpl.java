@@ -2,6 +2,7 @@ package com.example.crud.repository;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -11,6 +12,21 @@ import com.example.crud.domain.Domain;
 @Repository
 public class BookRepositoryImpl implements BookRepository {
 	private List<Domain> listOfBooks = new ArrayList<>();
+	
+	public Domain getBookById(String bookId) {
+		Domain bookInfo = null;
+		for(int i =0; i<listOfBooks.size(); i++) {
+			Domain book = listOfBooks.get(i);
+			if(book!=null && book.getBookId()!=null && book.getBookId().equals(bookId)) {
+				bookInfo = book;
+				break;
+			}
+		}
+		if(bookInfo == null) 
+			throw new IllegalArgumentException("도서 ID가 " + bookId + "인 해당 도서를 찾을 수 없습니다.");
+		
+		return bookInfo;
+	}
 
 	public BookRepositoryImpl() {
 		Domain book1 = new Domain();
